@@ -1,0 +1,107 @@
+{
+  "recording": "datasets/lab/angle_hold_low",
+  "source": "video:datasets/lab/angle_hold_low/recording.webm",
+  "preset": "angle_hold_low",
+  "config": {
+    "preset": "angle_hold_low",
+    "drill": "angle_hold",
+    "seed": 7,
+    "durationS": 60,
+    "fps": 30,
+    "entryPitchDeg": 1.4,
+    "entryYawDeg": 0.8,
+    "reactionMs": 230,
+    "flickMs": 190,
+    "outcome": "clean",
+    "overshootDeg": 1.6,
+    "shootDelayMs": 70,
+    "strafeAtShot": false
+  },
+  "frames": 600,
+  "resolution": "1280x720",
+  "environment_detect_rate": 1.0,
+  "hud_exact_rate": 1.0,
+  "crosshair_detect_rate": 1.0,
+  "crosshair_err_px": {
+    "p50": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  },
+  "head_recall": 0.9178,
+  "head_frames": 146,
+  "head_err_px_no_overlap": {
+    "p50": 0.5137479192835064,
+    "p95": 3.7082278592901563,
+    "n": 22
+  },
+  "head_err_radii_no_overlap": {
+    "p50": 0.1966505741050848,
+    "p95": 1.6668440073646706
+  },
+  "head_err_px_crosshair_overlap": {
+    "p50": 0.5613348041483089,
+    "p95": 5.016823234352824,
+    "n": 112
+  },
+  "bots_spawned_gt": 9,
+  "exposures": 9,
+  "acquisitions": 8,
+  "acquisition_ms_measured": [
+    500,
+    267,
+    433,
+    400,
+    367,
+    267,
+    367,
+    567
+  ],
+  "acquisition_ms_gt": [
+    467,
+    267,
+    433,
+    400,
+    333,
+    333,
+    333,
+    567,
+    533
+  ],
+  "entry_vertical_deg_settled": [
+    1.35,
+    1.52,
+    1.35,
+    1.35,
+    1.46,
+    1.41,
+    1.57,
+    1.35,
+    1.41
+  ],
+  "entry_vertical_deg_median": 1.407,
+  "configured_entry_pitch_deg": 1.4,
+  "flick_outcomes": [
+    "clean",
+    "clean",
+    "clean",
+    "clean",
+    "clean",
+    "clean",
+    "clean",
+    "clean"
+  ],
+  "shots_detected": 8,
+  "shot_on_head_known": 8,
+  "shot_on_head_agree_gt": 7,
+  "shot_on_head_unknown": 0,
+  "shots_gt": 9,
+  "recommendations": [
+    "aim.placement.low"
+  ],
+  "pipeline_ms": {
+    "p50": 5.666042000029847,
+    "p95": 6.10519019946878,
+    "p99": 6.405548750090019
+  },
+  "frame_interval_ms": 33.33
+}

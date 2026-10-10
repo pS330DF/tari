@@ -1,0 +1,23 @@
+{
+  "preset": "flick_clean",
+  "seed": "7",
+  "frames": 600,
+  "width": 1280,
+  "height": 720,
+  "config": {
+    "preset": "flick_clean",
+    "drill": "flick",
+    "seed": 7,
+    "durationS": 60,
+    "fps": 30,
+    "entryPitchDeg": 0.8,
+    "entryYawDeg": 0.8,
+    "reactionMs": 230,
+    "flickMs": 190,
+    "outcome": "clean",
+    "overshootDeg": 1.6,
+    "shootDelayMs": 70,
+    "strafeAtShot": false
+  },
+  "recorded_s": 40.991
+}

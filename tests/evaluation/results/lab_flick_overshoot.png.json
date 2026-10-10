@@ -1,0 +1,128 @@
+{
+  "recording": "<local>/lab_flick_overshoot",
+  "source": "png (lossless)",
+  "preset": "flick_overshoot",
+  "config": {
+    "preset": "flick_overshoot",
+    "drill": "flick",
+    "seed": 7,
+    "durationS": 60,
+    "fps": 30,
+    "entryPitchDeg": 0.8,
+    "entryYawDeg": 0.8,
+    "reactionMs": 230,
+    "flickMs": 190,
+    "outcome": "overshoot",
+    "overshootDeg": 1.8,
+    "shootDelayMs": 70,
+    "strafeAtShot": false
+  },
+  "frames": 600,
+  "resolution": "1280x720",
+  "environment_detect_rate": 1.0,
+  "hud_exact_rate": 1.0,
+  "crosshair_detect_rate": 1.0,
+  "crosshair_err_px": {
+    "p50": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  },
+  "head_recall": 0.9657,
+  "head_frames": 321,
+  "head_err_px_no_overlap": {
+    "p50": 0.5009041084996868,
+    "p95": 1.336299925270065,
+    "n": 170
+  },
+  "head_err_radii_no_overlap": {
+    "p50": 0.0952919371729855,
+    "p95": 0.3745000965375032
+  },
+  "head_err_px_crosshair_overlap": {
+    "p50": 0.5053333338394095,
+    "p95": 3.333619515096279,
+    "n": 140
+  },
+  "bots_spawned_gt": 14,
+  "exposures": 14,
+  "acquisitions": 14,
+  "acquisition_ms_measured": [
+    600,
+    633,
+    367,
+    633,
+    633,
+    400,
+    633,
+    633,
+    633,
+    633,
+    633,
+    400,
+    400,
+    633
+  ],
+  "acquisition_ms_gt": [
+    600,
+    633,
+    367,
+    633,
+    633,
+    400,
+    633,
+    633,
+    633,
+    400,
+    400,
+    400,
+    400,
+    633
+  ],
+  "entry_vertical_deg_settled": [
+    -0.15,
+    0.0,
+    0.0,
+    -0.06,
+    -0.07,
+    0.0,
+    0.0,
+    0.0,
+    -0.06,
+    0.0,
+    0.0,
+    0.06,
+    -0.07
+  ],
+  "entry_vertical_deg_median": 0.0,
+  "configured_entry_pitch_deg": 0.8,
+  "flick_outcomes": [
+    "overshoot",
+    "overshoot",
+    "overshoot",
+    "overshoot",
+    "overshoot",
+    "overshoot",
+    "overshoot",
+    "overshoot",
+    "overshoot",
+    "overshoot",
+    "overshoot",
+    "overshoot",
+    "overshoot"
+  ],
+  "shots_detected": 13,
+  "shot_on_head_known": 13,
+  "shot_on_head_agree_gt": 13,
+  "shot_on_head_unknown": 0,
+  "shots_gt": 13,
+  "recommendations": [
+    "aim.acquisition.slow",
+    "aim.flick.overshoot"
+  ],
+  "pipeline_ms": {
+    "p50": 5.957166499683808,
+    "p95": 6.495744049379937,
+    "p99": 6.975497080338752
+  },
+  "frame_interval_ms": 33.33
+}

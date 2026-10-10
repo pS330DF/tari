@@ -1,0 +1,85 @@
+{
+  "note": "Loopback WebSocket, 1920x1080 synthetic frames (540p + 384 crop packets, ~2.6 MB each).",
+  "runs": [
+    {
+      "target_fps": 30,
+      "max_in_flight": 1,
+      "seconds": 6.0,
+      "sent": 181,
+      "results": 181,
+      "dropped": 0,
+      "skipped_client": 0,
+      "analyzed_fps": 30.2,
+      "rtt_ms": {
+        "p50": 10.4,
+        "p95": 11.57,
+        "p99": 21.5,
+        "max": 31.49
+      }
+    },
+    {
+      "target_fps": 60,
+      "max_in_flight": 1,
+      "seconds": 6.0,
+      "sent": 357,
+      "results": 357,
+      "dropped": 0,
+      "skipped_client": 4,
+      "analyzed_fps": 59.5,
+      "rtt_ms": {
+        "p50": 8.12,
+        "p95": 8.88,
+        "p99": 16.11,
+        "max": 28.62
+      }
+    },
+    {
+      "target_fps": 60,
+      "max_in_flight": 2,
+      "seconds": 6.0,
+      "sent": 361,
+      "results": 361,
+      "dropped": 0,
+      "skipped_client": 0,
+      "analyzed_fps": 60.2,
+      "rtt_ms": {
+        "p50": 8.04,
+        "p95": 9.02,
+        "p99": 18.49,
+        "max": 31.16
+      }
+    },
+    {
+      "target_fps": 120,
+      "max_in_flight": 8,
+      "seconds": 6.0,
+      "sent": 721,
+      "results": 716,
+      "dropped": 5,
+      "skipped_client": 0,
+      "analyzed_fps": 119.3,
+      "rtt_ms": {
+        "p50": 7.13,
+        "p95": 8.01,
+        "p99": 10.82,
+        "max": 31.52
+      }
+    },
+    {
+      "target_fps": 400,
+      "max_in_flight": 64,
+      "seconds": 6.0,
+      "sent": 2401,
+      "results": 622,
+      "dropped": 1779,
+      "skipped_client": 0,
+      "analyzed_fps": 103.7,
+      "rtt_ms": {
+        "p50": 11.83,
+        "p95": 14.47,
+        "p99": 26.62,
+        "max": 43.9
+      }
+    }
+  ]
+}

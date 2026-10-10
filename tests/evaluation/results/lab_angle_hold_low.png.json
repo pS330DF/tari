@@ -1,0 +1,107 @@
+{
+  "recording": "<local>/lab_angle_hold_low",
+  "source": "png (lossless)",
+  "preset": "angle_hold_low",
+  "config": {
+    "preset": "angle_hold_low",
+    "drill": "angle_hold",
+    "seed": 7,
+    "durationS": 60,
+    "fps": 30,
+    "entryPitchDeg": 1.4,
+    "entryYawDeg": 0.8,
+    "reactionMs": 230,
+    "flickMs": 190,
+    "outcome": "clean",
+    "overshootDeg": 1.6,
+    "shootDelayMs": 70,
+    "strafeAtShot": false
+  },
+  "frames": 600,
+  "resolution": "1280x720",
+  "environment_detect_rate": 1.0,
+  "hud_exact_rate": 1.0,
+  "crosshair_detect_rate": 1.0,
+  "crosshair_err_px": {
+    "p50": 0.0,
+    "p95": 0.0,
+    "max": 0.0
+  },
+  "head_recall": 0.9384,
+  "head_frames": 146,
+  "head_err_px_no_overlap": {
+    "p50": 0.5290174373522765,
+    "p95": 2.85834388197593,
+    "n": 22
+  },
+  "head_err_radii_no_overlap": {
+    "p50": 0.2055134560154563,
+    "p95": 1.2758121191259177
+  },
+  "head_err_px_crosshair_overlap": {
+    "p50": 0.4417050813727179,
+    "p95": 3.6513802981102446,
+    "n": 115
+  },
+  "bots_spawned_gt": 9,
+  "exposures": 9,
+  "acquisitions": 8,
+  "acquisition_ms_measured": [
+    467,
+    267,
+    433,
+    400,
+    367,
+    367,
+    367,
+    567
+  ],
+  "acquisition_ms_gt": [
+    467,
+    267,
+    433,
+    400,
+    333,
+    333,
+    333,
+    567,
+    533
+  ],
+  "entry_vertical_deg_settled": [
+    1.29,
+    1.41,
+    1.41,
+    1.41,
+    1.41,
+    1.41,
+    1.46,
+    1.35,
+    1.35
+  ],
+  "entry_vertical_deg_median": 1.407,
+  "configured_entry_pitch_deg": 1.4,
+  "flick_outcomes": [
+    "clean",
+    "clean",
+    "clean",
+    "clean",
+    "clean",
+    "clean",
+    "clean",
+    "clean"
+  ],
+  "shots_detected": 8,
+  "shot_on_head_known": 8,
+  "shot_on_head_agree_gt": 8,
+  "shot_on_head_unknown": 0,
+  "shots_gt": 9,
+  "recommendations": [
+    "aim.placement.low"
+  ],
+  "pipeline_ms": {
+    "p50": 5.689354500191257,
+    "p95": 6.112537799754136,
+    "p99": 6.47083541944994
+  },
+  "frame_interval_ms": 33.33
+}

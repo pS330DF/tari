@@ -1,0 +1,22 @@
+{
+  "name": "@tari/training-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "TARI Training Lab: controlled interactive aim-training environment",
+  "scripts": {
+    "dev": "vite --port 5174 --strictPort",
+    "build": "vite build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.0",
+    "vitest": "^4.0.0"
+  }
+}

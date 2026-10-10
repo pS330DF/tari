@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tari"
+version = "0.1.0"
+description = "TARI engine: local perception, temporal state, and deterministic coaching"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "pydantic>=2.8",
+  "numpy>=1.26",
+  "opencv-python-headless>=4.10",
+  "psutil>=6",
+]
+
+[project.optional-dependencies]
+onnx = ["onnxruntime>=1.19"]
+dev = ["pytest>=8", "httpx>=0.27", "onnx>=1.16", "imageio-ffmpeg>=0.5", "onnxruntime>=1.19"]
+
+[tool.setuptools.packages.find]
+where = [
+  "packages/event-schema/python",
+  "services/perception",
+  "services/state-engine",
+  "services/coaching",
+  "services/engine",
+  "datasets/generator",
+]
+
+[tool.setuptools.package-data]
+tari_schema = ["*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [
+  "packages/event-schema/python",
+  "services/perception",
+  "services/state-engine",
+  "services/coaching",
+  "services/engine",
+  "datasets/generator",
+  "tests",
+]
+addopts = "-ra"
+markers = ["slow: longer-running integration tests"]

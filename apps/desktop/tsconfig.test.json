@@ -1,0 +1,5 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": { "noEmit": true, "types": ["node", "vite/client"], "lib": ["ES2023", "DOM", "DOM.Iterable"] },
+  "include": ["test/**/*", "src/shared/**/*", "src/main/settings-store.ts", "src/main/logger.ts", "src/renderer/src/capture/scheduler.ts", "src/renderer/src/capture/regions.ts", "src/renderer/src/voice/**/*"]
+}

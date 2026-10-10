@@ -1,0 +1,35 @@
+{
+  "name": "tari",
+  "private": true,
+  "version": "0.1.0",
+  "description": "TARI \u2014 Tactical Augmented Reasoning Intelligence: real-time coaching companion (training-lab first)",
+  "packageManager": "pnpm@10.14.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "gen:schema": "node scripts/py.mjs scripts/gen_schema.py && node scripts/gen-types.mjs",
+    "gen:fixtures": "node scripts/py.mjs scripts/gen_fixtures.py",
+    "gen:lab-profile": "node scripts/py.mjs scripts/gen_lab_profile.py",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test:py": "node scripts/py.mjs -m pytest -q -p no:warnings",
+    "test:ts": "pnpm -r --if-present test",
+    "test:rust": "cargo test --manifest-path services/capture/Cargo.toml",
+    "test": "pnpm test:py && pnpm test:ts",
+    "build:lab": "pnpm --filter @tari/training-lab build",
+    "build": "pnpm build:lab && pnpm --filter @tari/desktop build",
+    "dev": "pnpm build:lab && pnpm --filter @tari/desktop dev",
+    "start": "pnpm build && pnpm --filter @tari/desktop start",
+    "engine": "node scripts/py.mjs -m tari_engine --port 8765 --dev-token dev",
+    "bench": "node scripts/py.mjs tests/performance/bench_pipeline.py && node scripts/py.mjs tests/performance/bench_stream.py",
+    "e2e": "pnpm build && node scripts/e2e.mjs",
+    "record:lab": "node scripts/electron.mjs scripts/record-lab.cjs",
+    "eval:lab": "node scripts/py.mjs tests/evaluation/eval_lab_recording.py",
+    "check:capture-windows": "cargo check --manifest-path services/capture/Cargo.toml --target x86_64-pc-windows-msvc"
+  },
+  "devDependencies": {
+    "json-schema-to-typescript": "^15.0.4",
+    "typescript": "~5.9.3"
+  }
+}

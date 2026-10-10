@@ -1,0 +1,23 @@
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+out/
+build/
+*.tsbuildinfo
+.DS_Store
+# runtime data
+.tari-data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+# generated media (re-creatable with scripts/make_dataset.py)
+datasets/synthetic/
+tests/performance/results/*.prof
+services/capture/target/
+
+# python packaging
+*.egg-info/

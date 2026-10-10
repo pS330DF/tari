@@ -1,0 +1,246 @@
+{
+  "id": "training_lab_v1",
+  "version": "1.0.0",
+  "description": "TARI Training Lab visual contract: fiducial, HUD layout, palette, camera.",
+  "fiducial": {
+    "dictionary": "DICT_4X4_50",
+    "marker_id": 21,
+    "cells": 6,
+    "bits": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "size_css_px": 72,
+    "size_viewport_fraction": 0.075,
+    "margin_css_px": 22,
+    "anchor": "bottom-left",
+    "environment": "training_lab",
+    "map_id": "lab_range_v1"
+  },
+  "hud": {
+    "units": "marker_side",
+    "fiducial_frame": [
+      -0.36,
+      -0.36,
+      1.72,
+      1.72
+    ],
+    "quiet_zone": [
+      -0.18,
+      -0.18,
+      1.36,
+      1.36
+    ],
+    "panel": [
+      1.36,
+      -0.36,
+      4.2,
+      1.72
+    ],
+    "colors": {
+      "frame": "#0b0f12",
+      "quiet": "#f2f5f7",
+      "panel": "#0b0f12",
+      "lit": "#e8f6f8",
+      "unlit": "#1d272c",
+      "label": "#5b6b72"
+    },
+    "readouts": {
+      "drill": {
+        "x": 1.62,
+        "y": 0.04,
+        "digits": 1,
+        "digit_w": 0.44,
+        "digit_h": 0.76,
+        "pitch": 0.58,
+        "label": "DRILL"
+      },
+      "ammo": {
+        "x": 2.42,
+        "y": 0.04,
+        "digits": 2,
+        "digit_w": 0.44,
+        "digit_h": 0.76,
+        "pitch": 0.58,
+        "label": "AMMO"
+      },
+      "timer": {
+        "x": 3.84,
+        "y": 0.04,
+        "digits": 3,
+        "digit_w": 0.44,
+        "digit_h": 0.76,
+        "pitch": 0.58,
+        "label": "TIME"
+      }
+    },
+    "segments": {
+      "a": [
+        0.16,
+        0.0,
+        0.84,
+        0.12
+      ],
+      "b": [
+        0.78,
+        0.07,
+        1.0,
+        0.47
+      ],
+      "c": [
+        0.78,
+        0.53,
+        1.0,
+        0.93
+      ],
+      "d": [
+        0.16,
+        0.88,
+        0.84,
+        1.0
+      ],
+      "e": [
+        0.0,
+        0.53,
+        0.22,
+        0.93
+      ],
+      "f": [
+        0.0,
+        0.07,
+        0.22,
+        0.47
+      ],
+      "g": [
+        0.16,
+        0.44,
+        0.84,
+        0.56
+      ]
+    },
+    "digit_patterns": {
+      "0": "abcdef",
+      "1": "bc",
+      "2": "abged",
+      "3": "abgcd",
+      "4": "fgbc",
+      "5": "afgcd",
+      "6": "afgecd",
+      "7": "abc",
+      "8": "abcdefg",
+      "9": "abcdfg"
+    }
+  },
+  "drills": {
+    "1": "angle_hold",
+    "2": "flick"
+  },
+  "crosshair": {
+    "color": "#00f0ff",
+    "outline": "#000000",
+    "arm_length_css_px": 7,
+    "thickness_css_px": 2,
+    "gap_css_px": 4,
+    "movement_error_max_css_px": 12
+  },
+  "targets": {
+    "colors": {
+      "red": "#ff3045",
+      "yellow": "#f5e63a",
+      "purple": "#c042ff"
+    },
+    "hsv_ranges_opencv": {
+      "red": [
+        [
+          0,
+          140,
+          110,
+          7,
+          255,
+          255
+        ],
+        [
+          170,
+          140,
+          110,
+          180,
+          255,
+          255
+        ]
+      ],
+      "yellow": [
+        [
+          22,
+          140,
+          110,
+          34,
+          255,
+          255
+        ]
+      ],
+      "purple": [
+        [
+          132,
+          120,
+          110,
+          152,
+          255,
+          255
+        ]
+      ]
+    },
+    "head_radius_m": 0.12,
+    "head_center_height_m": 1.6
+  },
+  "camera": {
+    "hfov_deg": 103.0,
+    "eye_height_m": 1.6
+  },
+  "palette_rules": "Environment colors stay below saturation 90 in target hue bands so target masks stay clean."
+}

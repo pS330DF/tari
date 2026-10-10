@@ -1,0 +1,4120 @@
+{
+  "$defs": {
+    "BoolField": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "method": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Method"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why the field is unknown/stale, if it is",
+          "title": "Reason"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "observed",
+            "estimated",
+            "unknown",
+            "stale"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "updated_ts_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated Ts Ms"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        }
+      },
+      "required": [
+        "status",
+        "confidence",
+        "updated_ts_ms",
+        "source",
+        "method",
+        "reason",
+        "value"
+      ],
+      "title": "BoolField",
+      "type": "object"
+    },
+    "ClientMetricsMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "snapshot": {
+          "$ref": "#/$defs/PerformanceSnapshot"
+        },
+        "type": {
+          "const": "client_metrics",
+          "default": "client_metrics",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "snapshot"
+      ],
+      "title": "ClientMetricsMessage",
+      "type": "object"
+    },
+    "ClientSourceInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "default": "",
+          "maxLength": 256,
+          "title": "Label",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 256,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_kind": {
+          "enum": [
+            "screen",
+            "window",
+            "video_file",
+            "native_wgc",
+            "synthetic"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "source_kind",
+        "label"
+      ],
+      "title": "ClientSourceInfo",
+      "type": "object"
+    },
+    "CoachingRecommendation": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "context": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Context",
+          "type": "object"
+        },
+        "created_ts_ms": {
+          "title": "Created Ts Ms",
+          "type": "number"
+        },
+        "dedupe_key": {
+          "title": "Dedupe Key",
+          "type": "string"
+        },
+        "domain": {
+          "enum": [
+            "aim",
+            "utility",
+            "positioning",
+            "tactical",
+            "agent",
+            "team",
+            "communication",
+            "system"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "expiration": {
+          "$ref": "#/$defs/Expiration"
+        },
+        "language": {
+          "enum": [
+            "en",
+            "ko"
+          ],
+          "title": "Language",
+          "type": "string"
+        },
+        "observation": {
+          "title": "Observation",
+          "type": "string"
+        },
+        "priority": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "title": "Priority",
+          "type": "string"
+        },
+        "reasoning": {
+          "title": "Reasoning",
+          "type": "string"
+        },
+        "rec_id": {
+          "title": "Rec Id",
+          "type": "string"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "short_text": {
+          "title": "Short Text",
+          "type": "string"
+        },
+        "source_frame_id": {
+          "title": "Source Frame Id",
+          "type": "integer"
+        },
+        "source_ts_ms": {
+          "title": "Source Ts Ms",
+          "type": "number"
+        },
+        "suggestion": {
+          "title": "Suggestion",
+          "type": "string"
+        },
+        "tone": {
+          "enum": [
+            "corrective",
+            "reinforcing",
+            "informational"
+          ],
+          "title": "Tone",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "rec_id",
+        "session_id",
+        "created_ts_ms",
+        "source_frame_id",
+        "source_ts_ms",
+        "domain",
+        "rule_id",
+        "dedupe_key",
+        "priority",
+        "confidence",
+        "tone",
+        "observation",
+        "suggestion",
+        "reasoning",
+        "short_text",
+        "evidence",
+        "context",
+        "expiration",
+        "language"
+      ],
+      "title": "CoachingRecommendation",
+      "type": "object"
+    },
+    "CoachingSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "focus": {
+          "items": {
+            "enum": [
+              "aim",
+              "utility",
+              "positioning",
+              "tactical",
+              "agent",
+              "team",
+              "communication",
+              "system"
+            ],
+            "type": "string"
+          },
+          "title": "Focus",
+          "type": "array"
+        },
+        "intensity": {
+          "default": "balanced",
+          "enum": [
+            "low",
+            "balanced",
+            "high"
+          ],
+          "title": "Intensity",
+          "type": "string"
+        },
+        "language": {
+          "default": "en",
+          "enum": [
+            "en",
+            "ko"
+          ],
+          "title": "Language",
+          "type": "string"
+        },
+        "min_confidence": {
+          "default": 0.5,
+          "maximum": 0.95,
+          "minimum": 0.2,
+          "title": "Min Confidence",
+          "type": "number"
+        },
+        "overlay_density": {
+          "default": "standard",
+          "enum": [
+            "minimal",
+            "standard",
+            "detailed"
+          ],
+          "title": "Overlay Density",
+          "type": "string"
+        },
+        "skill_level": {
+          "default": "intermediate",
+          "enum": [
+            "new",
+            "intermediate",
+            "advanced"
+          ],
+          "title": "Skill Level",
+          "type": "string"
+        },
+        "strictness": {
+          "default": "balanced",
+          "enum": [
+            "lenient",
+            "balanced",
+            "strict"
+          ],
+          "title": "Strictness",
+          "type": "string"
+        },
+        "training_goals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Training Goals",
+          "type": "array"
+        },
+        "voice_frequency": {
+          "default": "normal",
+          "enum": [
+            "off",
+            "minimal",
+            "normal",
+            "frequent"
+          ],
+          "title": "Voice Frequency",
+          "type": "string"
+        }
+      },
+      "required": [
+        "language",
+        "intensity",
+        "voice_frequency",
+        "strictness",
+        "overlay_density",
+        "skill_level",
+        "focus",
+        "training_goals",
+        "min_confidence"
+      ],
+      "title": "CoachingSettings",
+      "type": "object"
+    },
+    "CrosshairObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "arm_gap_px": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Center-to-inner-arm distance, source px",
+          "title": "Arm Gap Px"
+        },
+        "arms_found": {
+          "default": 0,
+          "title": "Arms Found",
+          "type": "integer"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "method": {
+          "enum": [
+            "detected",
+            "assumed_center"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "position": {
+          "$ref": "#/$defs/Point2"
+        }
+      },
+      "required": [
+        "position",
+        "method",
+        "confidence",
+        "arm_gap_px",
+        "arms_found"
+      ],
+      "title": "CrosshairObservation",
+      "type": "object"
+    },
+    "EgoMotion": {
+      "additionalProperties": false,
+      "description": "Global image motion between the previous and current analyzed frames.\n\nRotation and player translation are not separated: this is *view* motion.",
+      "properties": {
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "interval_ms": {
+          "title": "Interval Ms",
+          "type": "number"
+        },
+        "measurable": {
+          "title": "Measurable",
+          "type": "boolean"
+        },
+        "response": {
+          "title": "Response",
+          "type": "number"
+        },
+        "shift_px": {
+          "$ref": "#/$defs/Point2",
+          "description": "Content displacement prev->cur, source px"
+        },
+        "view_rate_dps": {
+          "$ref": "#/$defs/Point2",
+          "description": "Estimated view angular velocity: x=yaw (+right), y=pitch (+up)"
+        }
+      },
+      "required": [
+        "shift_px",
+        "view_rate_dps",
+        "interval_ms",
+        "response",
+        "confidence",
+        "measurable"
+      ],
+      "title": "EgoMotion",
+      "type": "object"
+    },
+    "EndSessionMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "default": "user_stopped",
+          "title": "Reason",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "type": {
+          "const": "end_session",
+          "default": "end_session",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "reason"
+      ],
+      "title": "EndSessionMessage",
+      "type": "object"
+    },
+    "EngineCapabilities": {
+      "additionalProperties": false,
+      "properties": {
+        "accelerator": {
+          "description": "Execution provider used for neural models, or 'none' if no model loaded",
+          "title": "Accelerator",
+          "type": "string"
+        },
+        "coaching_domains_live": {
+          "items": {
+            "enum": [
+              "aim",
+              "utility",
+              "positioning",
+              "tactical",
+              "agent",
+              "team",
+              "communication",
+              "system"
+            ],
+            "type": "string"
+          },
+          "title": "Coaching Domains Live",
+          "type": "array"
+        },
+        "coaching_domains_planned": {
+          "items": {
+            "enum": [
+              "aim",
+              "utility",
+              "positioning",
+              "tactical",
+              "agent",
+              "team",
+              "communication",
+              "system"
+            ],
+            "type": "string"
+          },
+          "title": "Coaching Domains Planned",
+          "type": "array"
+        },
+        "hud_profiles": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Hud Profiles",
+          "type": "array"
+        },
+        "onnx_providers_available": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Onnx Providers Available",
+          "type": "array"
+        },
+        "perception_modules": {
+          "items": {
+            "$ref": "#/$defs/ModuleStatus"
+          },
+          "title": "Perception Modules",
+          "type": "array"
+        },
+        "riot_integration": {
+          "const": "disabled_pending_authorization",
+          "title": "Riot Integration",
+          "type": "string"
+        }
+      },
+      "required": [
+        "perception_modules",
+        "onnx_providers_available",
+        "accelerator",
+        "coaching_domains_live",
+        "coaching_domains_planned",
+        "hud_profiles",
+        "riot_integration"
+      ],
+      "title": "EngineCapabilities",
+      "type": "object"
+    },
+    "EnvironmentChangedEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "coaching_mode": {
+          "title": "Coaching Mode",
+          "type": "string"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "current": {
+          "title": "Current",
+          "type": "string"
+        },
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "frame_id": {
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "previous": {
+          "title": "Previous",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "type": {
+          "const": "environment_changed",
+          "default": "environment_changed",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "session_id",
+        "frame_id",
+        "ts_ms",
+        "confidence",
+        "type",
+        "previous",
+        "current",
+        "coaching_mode"
+      ],
+      "title": "EnvironmentChangedEvent",
+      "type": "object"
+    },
+    "EnvironmentObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "corners": {
+          "items": {
+            "$ref": "#/$defs/Point2"
+          },
+          "title": "Corners",
+          "type": "array"
+        },
+        "kind": {
+          "enum": [
+            "training_lab",
+            "unknown"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "map_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Map Id"
+        },
+        "marker_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Marker Id"
+        }
+      },
+      "required": [
+        "kind",
+        "marker_id",
+        "map_id",
+        "corners",
+        "confidence"
+      ],
+      "title": "EnvironmentObservation",
+      "type": "object"
+    },
+    "EventSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "type": {
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_id",
+        "type",
+        "ts_ms"
+      ],
+      "title": "EventSummary",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "detail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detail"
+        },
+        "method": {
+          "description": "How the value was calculated, in plain language",
+          "title": "Method",
+          "type": "string"
+        },
+        "metric": {
+          "title": "Metric",
+          "type": "string"
+        },
+        "samples": {
+          "minimum": 0,
+          "title": "Samples",
+          "type": "integer"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "metric",
+        "value",
+        "unit",
+        "samples",
+        "method",
+        "detail"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "Expiration": {
+      "additionalProperties": false,
+      "properties": {
+        "expires_ts_ms": {
+          "title": "Expires Ts Ms",
+          "type": "number"
+        },
+        "ttl_ms": {
+          "title": "Ttl Ms",
+          "type": "number"
+        },
+        "until_event": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Event type that supersedes this recommendation",
+          "title": "Until Event"
+        }
+      },
+      "required": [
+        "ttl_ms",
+        "expires_ts_ms",
+        "until_event"
+      ],
+      "title": "Expiration",
+      "type": "object"
+    },
+    "FlickAnalyzedEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "frame_id": {
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "inferred_view_frames": {
+          "default": 0,
+          "description": "Frames where view motion was unmeasurable and was inferred from the error change",
+          "title": "Inferred View Frames",
+          "type": "integer"
+        },
+        "initial_error_deg": {
+          "title": "Initial Error Deg",
+          "type": "number"
+        },
+        "outcome": {
+          "enum": [
+            "clean",
+            "overshoot",
+            "undershoot",
+            "unresolved"
+          ],
+          "title": "Outcome",
+          "type": "string"
+        },
+        "overshoot_deg": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Overshoot Deg"
+        },
+        "residual_deg": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Error remaining when the first movement stopped",
+          "title": "Residual Deg"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "submovements": {
+          "title": "Submovements",
+          "type": "integer"
+        },
+        "track_id": {
+          "title": "Track Id",
+          "type": "integer"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "type": {
+          "const": "flick_analyzed",
+          "default": "flick_analyzed",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "session_id",
+        "frame_id",
+        "ts_ms",
+        "confidence",
+        "type",
+        "track_id",
+        "outcome",
+        "initial_error_deg",
+        "overshoot_deg",
+        "residual_deg",
+        "submovements",
+        "inferred_view_frames"
+      ],
+      "title": "FlickAnalyzedEvent",
+      "type": "object"
+    },
+    "FrameDroppedMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "age_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Age Ms"
+        },
+        "detail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detail"
+        },
+        "frame_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Frame Id"
+        },
+        "reason": {
+          "enum": [
+            "stale",
+            "superseded",
+            "invalid",
+            "out_of_order",
+            "no_session"
+          ],
+          "title": "Reason",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "type": {
+          "const": "frame_dropped",
+          "default": "frame_dropped",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "frame_id",
+        "reason",
+        "age_ms",
+        "detail"
+      ],
+      "title": "FrameDroppedMessage",
+      "type": "object"
+    },
+    "FramePacketHeader": {
+      "additionalProperties": false,
+      "properties": {
+        "acquired_ts_ms": {
+          "description": "Wall-clock time the capture adapter received the frame",
+          "title": "Acquired Ts Ms",
+          "type": "number"
+        },
+        "frame_id": {
+          "minimum": 0,
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "regions": {
+          "items": {
+            "$ref": "#/$defs/FrameRegion"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Regions",
+          "type": "array"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sent_ts_ms": {
+          "title": "Sent Ts Ms",
+          "type": "number"
+        },
+        "session_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Session Id",
+          "type": "string"
+        },
+        "simulated": {
+          "default": false,
+          "description": "True only for synthetic/test frames",
+          "title": "Simulated",
+          "type": "boolean"
+        },
+        "source_height": {
+          "exclusiveMinimum": 0,
+          "maximum": 16384,
+          "title": "Source Height",
+          "type": "integer"
+        },
+        "source_id": {
+          "maxLength": 256,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_kind": {
+          "enum": [
+            "screen",
+            "window",
+            "video_file",
+            "native_wgc",
+            "synthetic"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "source_label": {
+          "default": "",
+          "maxLength": 256,
+          "title": "Source Label",
+          "type": "string"
+        },
+        "source_width": {
+          "exclusiveMinimum": 0,
+          "maximum": 16384,
+          "title": "Source Width",
+          "type": "integer"
+        },
+        "type": {
+          "const": "frame",
+          "default": "frame",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "session_id",
+        "frame_id",
+        "source_id",
+        "source_kind",
+        "source_label",
+        "acquired_ts_ms",
+        "sent_ts_ms",
+        "source_width",
+        "source_height",
+        "regions",
+        "simulated"
+      ],
+      "title": "FramePacketHeader",
+      "type": "object"
+    },
+    "FrameRegion": {
+      "additionalProperties": false,
+      "description": "A pixel buffer cut from the source frame, possibly rescaled.\n\n``src_rect`` is in source-frame pixels; ``width``/``height`` are the payload\ndimensions. ``full`` regions are downscaled whole frames; ``center`` regions\nare unscaled crops around the frame center used for crosshair precision.",
+      "properties": {
+        "byte_length": {
+          "exclusiveMinimum": 0,
+          "title": "Byte Length",
+          "type": "integer"
+        },
+        "byte_offset": {
+          "minimum": 0,
+          "title": "Byte Offset",
+          "type": "integer"
+        },
+        "format": {
+          "const": "rgba8",
+          "default": "rgba8",
+          "title": "Format",
+          "type": "string"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "maximum": 8192,
+          "title": "Height",
+          "type": "integer"
+        },
+        "name": {
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "src_rect": {
+          "$ref": "#/$defs/PixelRect"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "maximum": 8192,
+          "title": "Width",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name",
+        "src_rect",
+        "width",
+        "height",
+        "format",
+        "byte_offset",
+        "byte_length"
+      ],
+      "title": "FrameRegion",
+      "type": "object"
+    },
+    "FrameResultMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "events": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "environment_changed": "#/$defs/EnvironmentChangedEvent",
+                "flick_analyzed": "#/$defs/FlickAnalyzedEvent",
+                "perception_notice": "#/$defs/PerceptionNoticeEvent",
+                "shot_fired": "#/$defs/ShotFiredEvent",
+                "source_reconfigured": "#/$defs/SourceReconfiguredEvent",
+                "target_acquired": "#/$defs/TargetAcquiredEvent",
+                "target_exposed": "#/$defs/TargetExposedEvent",
+                "target_lost": "#/$defs/TargetLostEvent"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/TargetExposedEvent"
+              },
+              {
+                "$ref": "#/$defs/TargetAcquiredEvent"
+              },
+              {
+                "$ref": "#/$defs/TargetLostEvent"
+              },
+              {
+                "$ref": "#/$defs/FlickAnalyzedEvent"
+              },
+              {
+                "$ref": "#/$defs/ShotFiredEvent"
+              },
+              {
+                "$ref": "#/$defs/EnvironmentChangedEvent"
+              },
+              {
+                "$ref": "#/$defs/SourceReconfiguredEvent"
+              },
+              {
+                "$ref": "#/$defs/PerceptionNoticeEvent"
+              }
+            ]
+          },
+          "title": "Events",
+          "type": "array"
+        },
+        "overlays": {
+          "items": {
+            "$ref": "#/$defs/OverlayInstruction"
+          },
+          "title": "Overlays",
+          "type": "array"
+        },
+        "perception": {
+          "$ref": "#/$defs/PerceptionResult"
+        },
+        "recommendations": {
+          "items": {
+            "$ref": "#/$defs/CoachingRecommendation"
+          },
+          "title": "Recommendations",
+          "type": "array"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/$defs/GameState"
+        },
+        "timings_ms": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Timings Ms",
+          "type": "object"
+        },
+        "type": {
+          "const": "frame_result",
+          "default": "frame_result",
+          "title": "Type",
+          "type": "string"
+        },
+        "voice": {
+          "items": {
+            "$ref": "#/$defs/VoiceInstruction"
+          },
+          "title": "Voice",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "perception",
+        "state",
+        "events",
+        "recommendations",
+        "overlays",
+        "voice",
+        "timings_ms"
+      ],
+      "title": "FrameResultMessage",
+      "type": "object"
+    },
+    "GameState": {
+      "additionalProperties": false,
+      "properties": {
+        "abilities": {
+          "$ref": "#/$defs/TextListField"
+        },
+        "agent": {
+          "$ref": "#/$defs/TextField"
+        },
+        "ammo": {
+          "$ref": "#/$defs/IntField"
+        },
+        "coaching_mode": {
+          "enum": [
+            "live_training",
+            "live_authorized",
+            "restricted"
+          ],
+          "title": "Coaching Mode",
+          "type": "string"
+        },
+        "coaching_mode_reason": {
+          "title": "Coaching Mode Reason",
+          "type": "string"
+        },
+        "crosshair": {
+          "$ref": "#/$defs/PointField"
+        },
+        "drill": {
+          "$ref": "#/$defs/TextField",
+          "description": "Training Lab drill read from the HUD"
+        },
+        "environment": {
+          "$ref": "#/$defs/TextField"
+        },
+        "frame_id": {
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "map": {
+          "$ref": "#/$defs/TextField"
+        },
+        "movement_error": {
+          "$ref": "#/$defs/BoolField"
+        },
+        "observation_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Observation Confidence",
+          "type": "number"
+        },
+        "recent_events": {
+          "items": {
+            "$ref": "#/$defs/EventSummary"
+          },
+          "title": "Recent Events",
+          "type": "array"
+        },
+        "round_phase": {
+          "$ref": "#/$defs/TextField"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "targets": {
+          "items": {
+            "$ref": "#/$defs/TrackState"
+          },
+          "title": "Targets",
+          "type": "array"
+        },
+        "teammates": {
+          "$ref": "#/$defs/TextListField"
+        },
+        "timer_s": {
+          "$ref": "#/$defs/IntField"
+        },
+        "ts_ms": {
+          "description": "Acquisition time of the frame this state reflects",
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "view_motion": {
+          "$ref": "#/$defs/MotionField"
+        }
+      },
+      "required": [
+        "schema_version",
+        "session_id",
+        "frame_id",
+        "ts_ms",
+        "environment",
+        "map",
+        "agent",
+        "abilities",
+        "round_phase",
+        "drill",
+        "teammates",
+        "crosshair",
+        "movement_error",
+        "view_motion",
+        "ammo",
+        "timer_s",
+        "targets",
+        "recent_events",
+        "observation_confidence",
+        "coaching_mode",
+        "coaching_mode_reason"
+      ],
+      "title": "GameState",
+      "type": "object"
+    },
+    "HelloMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "capabilities": {
+          "$ref": "#/$defs/EngineCapabilities"
+        },
+        "engine_version": {
+          "title": "Engine Version",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "type": {
+          "const": "hello",
+          "default": "hello",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "engine_version",
+        "capabilities"
+      ],
+      "title": "HelloMessage",
+      "type": "object"
+    },
+    "HudReading": {
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "title": "Profile",
+          "type": "string"
+        },
+        "readouts": {
+          "items": {
+            "$ref": "#/$defs/HudReadout"
+          },
+          "title": "Readouts",
+          "type": "array"
+        }
+      },
+      "required": [
+        "profile",
+        "readouts"
+      ],
+      "title": "HudReading",
+      "type": "object"
+    },
+    "HudReadout": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "name",
+        "value",
+        "raw",
+        "confidence"
+      ],
+      "title": "HudReadout",
+      "type": "object"
+    },
+    "IntField": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "method": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Method"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why the field is unknown/stale, if it is",
+          "title": "Reason"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "observed",
+            "estimated",
+            "unknown",
+            "stale"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "updated_ts_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated Ts Ms"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        }
+      },
+      "required": [
+        "status",
+        "confidence",
+        "updated_ts_ms",
+        "source",
+        "method",
+        "reason",
+        "value"
+      ],
+      "title": "IntField",
+      "type": "object"
+    },
+    "LatencyStats": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "title": "Count",
+          "type": "integer"
+        },
+        "max": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max"
+        },
+        "mean": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mean"
+        },
+        "p50": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "P50"
+        },
+        "p95": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "P95"
+        },
+        "p99": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "P99"
+        }
+      },
+      "required": [
+        "count",
+        "p50",
+        "p95",
+        "p99",
+        "mean",
+        "max"
+      ],
+      "title": "LatencyStats",
+      "type": "object"
+    },
+    "ModuleStatus": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Backend"
+        },
+        "detail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detail"
+        },
+        "duration_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Duration Ms"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "ok",
+            "degraded",
+            "failed",
+            "skipped",
+            "unavailable"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "state",
+        "backend",
+        "duration_ms",
+        "detail"
+      ],
+      "title": "ModuleStatus",
+      "type": "object"
+    },
+    "MotionField": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "method": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Method"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why the field is unknown/stale, if it is",
+          "title": "Reason"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "observed",
+            "estimated",
+            "unknown",
+            "stale"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "updated_ts_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated Ts Ms"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EgoMotion"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "status",
+        "confidence",
+        "updated_ts_ms",
+        "source",
+        "method",
+        "reason",
+        "value"
+      ],
+      "title": "MotionField",
+      "type": "object"
+    },
+    "NoticeMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "level": {
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "priority": {
+          "default": "P2",
+          "enum": [
+            "P0",
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "title": "Priority",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "type": {
+          "const": "notice",
+          "default": "notice",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "level",
+        "code",
+        "message",
+        "priority"
+      ],
+      "title": "NoticeMessage",
+      "type": "object"
+    },
+    "OverlayInstruction": {
+      "additionalProperties": false,
+      "properties": {
+        "created_ts_ms": {
+          "title": "Created Ts Ms",
+          "type": "number"
+        },
+        "gated_by": {
+          "enum": [
+            "training_lab",
+            "authorized"
+          ],
+          "title": "Gated By",
+          "type": "string"
+        },
+        "instruction_id": {
+          "title": "Instruction Id",
+          "type": "string"
+        },
+        "layer": {
+          "enum": [
+            "spatial",
+            "panel"
+          ],
+          "title": "Layer",
+          "type": "string"
+        },
+        "primitives": {
+          "items": {
+            "$ref": "#/$defs/OverlayPrimitive"
+          },
+          "title": "Primitives",
+          "type": "array"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "source_frame_id": {
+          "title": "Source Frame Id",
+          "type": "integer"
+        },
+        "source_ts_ms": {
+          "description": "Acquisition time of the frame these primitives describe",
+          "title": "Source Ts Ms",
+          "type": "number"
+        },
+        "ttl_ms": {
+          "description": "Renderer must hide primitives once frame age exceeds this in live mode",
+          "title": "Ttl Ms",
+          "type": "number"
+        }
+      },
+      "required": [
+        "schema_version",
+        "instruction_id",
+        "session_id",
+        "source_frame_id",
+        "source_ts_ms",
+        "created_ts_ms",
+        "ttl_ms",
+        "layer",
+        "gated_by",
+        "primitives"
+      ],
+      "title": "OverlayInstruction",
+      "type": "object"
+    },
+    "OverlayPrimitive": {
+      "additionalProperties": false,
+      "properties": {
+        "emphasis": {
+          "default": 1.0,
+          "title": "Emphasis",
+          "type": "number"
+        },
+        "kind": {
+          "enum": [
+            "box",
+            "circle",
+            "line",
+            "arrow",
+            "polyline",
+            "hline",
+            "text",
+            "cross"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "points": {
+          "items": {
+            "$ref": "#/$defs/Point2"
+          },
+          "title": "Points",
+          "type": "array"
+        },
+        "radius": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Normalized by source width",
+          "title": "Radius"
+        },
+        "style": {
+          "enum": [
+            "target",
+            "head",
+            "crosshair",
+            "crosshair_estimated",
+            "error",
+            "correction",
+            "trajectory",
+            "guide",
+            "label",
+            "warning",
+            "good"
+          ],
+          "title": "Style",
+          "type": "string"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text"
+        }
+      },
+      "required": [
+        "kind",
+        "style",
+        "points",
+        "radius",
+        "text",
+        "emphasis"
+      ],
+      "title": "OverlayPrimitive",
+      "type": "object"
+    },
+    "PerceptionNoticeEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "frame_id": {
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "module": {
+          "title": "Module",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "type": {
+          "const": "perception_notice",
+          "default": "perception_notice",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "session_id",
+        "frame_id",
+        "ts_ms",
+        "confidence",
+        "type",
+        "module",
+        "state",
+        "message"
+      ],
+      "title": "PerceptionNoticeEvent",
+      "type": "object"
+    },
+    "PerceptionResult": {
+      "additionalProperties": false,
+      "properties": {
+        "acquired_ts_ms": {
+          "title": "Acquired Ts Ms",
+          "type": "number"
+        },
+        "crosshair": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CrosshairObservation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "ego_motion": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EgoMotion"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "engine_received_ts_ms": {
+          "title": "Engine Received Ts Ms",
+          "type": "number"
+        },
+        "environment": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EnvironmentObservation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "frame_id": {
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "hud": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HudReading"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "modules": {
+          "items": {
+            "$ref": "#/$defs/ModuleStatus"
+          },
+          "title": "Modules",
+          "type": "array"
+        },
+        "processed_ts_ms": {
+          "title": "Processed Ts Ms",
+          "type": "number"
+        },
+        "processing_started_ts_ms": {
+          "title": "Processing Started Ts Ms",
+          "type": "number"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "simulated": {
+          "default": false,
+          "title": "Simulated",
+          "type": "boolean"
+        },
+        "source_height": {
+          "title": "Source Height",
+          "type": "integer"
+        },
+        "source_width": {
+          "title": "Source Width",
+          "type": "integer"
+        },
+        "targets": {
+          "items": {
+            "$ref": "#/$defs/TargetDetection"
+          },
+          "title": "Targets",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "session_id",
+        "frame_id",
+        "acquired_ts_ms",
+        "engine_received_ts_ms",
+        "processing_started_ts_ms",
+        "processed_ts_ms",
+        "source_width",
+        "source_height",
+        "simulated",
+        "crosshair",
+        "targets",
+        "ego_motion",
+        "hud",
+        "environment",
+        "modules"
+      ],
+      "title": "PerceptionResult",
+      "type": "object"
+    },
+    "PerceptionSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "crosshair_color": {
+          "default": "#00f0ff",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "title": "Crosshair Color",
+          "type": "string"
+        },
+        "hfov_deg": {
+          "default": 103.0,
+          "maximum": 140,
+          "minimum": 60,
+          "title": "Hfov Deg",
+          "type": "number"
+        },
+        "hud_profile": {
+          "default": "training_lab_v1",
+          "enum": [
+            "training_lab_v1",
+            "none"
+          ],
+          "title": "Hud Profile",
+          "type": "string"
+        },
+        "target_color": {
+          "default": "red",
+          "enum": [
+            "red",
+            "yellow",
+            "purple"
+          ],
+          "title": "Target Color",
+          "type": "string"
+        }
+      },
+      "required": [
+        "crosshair_color",
+        "target_color",
+        "hfov_deg",
+        "hud_profile"
+      ],
+      "title": "PerceptionSettings",
+      "type": "object"
+    },
+    "PerformanceMetric": {
+      "additionalProperties": false,
+      "properties": {
+        "available": {
+          "default": true,
+          "title": "Available",
+          "type": "boolean"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "engine",
+            "desktop"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "schema_version",
+        "name",
+        "value",
+        "unit",
+        "ts_ms",
+        "source",
+        "available",
+        "note"
+      ],
+      "title": "PerformanceMetric",
+      "type": "object"
+    },
+    "PerformanceSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "counters": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Counters",
+          "type": "object"
+        },
+        "gauges": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Gauges",
+          "type": "object"
+        },
+        "latencies": {
+          "additionalProperties": {
+            "$ref": "#/$defs/LatencyStats"
+          },
+          "title": "Latencies",
+          "type": "object"
+        },
+        "rates": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Rates",
+          "type": "object"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "engine",
+            "desktop"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "unavailable": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "metric -> reason it cannot be measured",
+          "title": "Unavailable",
+          "type": "object"
+        },
+        "window_s": {
+          "title": "Window S",
+          "type": "number"
+        }
+      },
+      "required": [
+        "schema_version",
+        "ts_ms",
+        "window_s",
+        "source",
+        "latencies",
+        "rates",
+        "counters",
+        "gauges",
+        "unavailable"
+      ],
+      "title": "PerformanceSnapshot",
+      "type": "object"
+    },
+    "PingMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "client_ts_ms": {
+          "title": "Client Ts Ms",
+          "type": "number"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "type": {
+          "const": "ping",
+          "default": "ping",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "client_ts_ms"
+      ],
+      "title": "PingMessage",
+      "type": "object"
+    },
+    "PixelRect": {
+      "additionalProperties": false,
+      "properties": {
+        "h": {
+          "exclusiveMinimum": 0,
+          "title": "H",
+          "type": "integer"
+        },
+        "w": {
+          "exclusiveMinimum": 0,
+          "title": "W",
+          "type": "integer"
+        },
+        "x": {
+          "minimum": 0,
+          "title": "X",
+          "type": "integer"
+        },
+        "y": {
+          "minimum": 0,
+          "title": "Y",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "w",
+        "h"
+      ],
+      "title": "PixelRect",
+      "type": "object"
+    },
+    "PlayerProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "environments": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Environments",
+          "type": "object"
+        },
+        "generated_ts_ms": {
+          "title": "Generated Ts Ms",
+          "type": "number"
+        },
+        "next_focus": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Next Focus"
+        },
+        "next_focus_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Next Focus Reason"
+        },
+        "player_id": {
+          "title": "Player Id",
+          "type": "string"
+        },
+        "recurring_issues": {
+          "items": {
+            "$ref": "#/$defs/RecurringIssue"
+          },
+          "title": "Recurring Issues",
+          "type": "array"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sessions_total": {
+          "title": "Sessions Total",
+          "type": "integer"
+        },
+        "skills": {
+          "items": {
+            "$ref": "#/$defs/SkillProgress"
+          },
+          "title": "Skills",
+          "type": "array"
+        },
+        "total_exposures": {
+          "title": "Total Exposures",
+          "type": "integer"
+        },
+        "validated_sessions": {
+          "description": "Sessions with enough measured samples to count toward trends",
+          "title": "Validated Sessions",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "player_id",
+        "generated_ts_ms",
+        "sessions_total",
+        "validated_sessions",
+        "total_exposures",
+        "skills",
+        "recurring_issues",
+        "environments",
+        "next_focus",
+        "next_focus_reason"
+      ],
+      "title": "PlayerProfile",
+      "type": "object"
+    },
+    "Point2": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "title": "Point2",
+      "type": "object"
+    },
+    "PointField": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "method": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Method"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why the field is unknown/stale, if it is",
+          "title": "Reason"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "observed",
+            "estimated",
+            "unknown",
+            "stale"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "updated_ts_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated Ts Ms"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Point2"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "status",
+        "confidence",
+        "updated_ts_ms",
+        "source",
+        "method",
+        "reason",
+        "value"
+      ],
+      "title": "PointField",
+      "type": "object"
+    },
+    "PongMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "client_ts_ms": {
+          "title": "Client Ts Ms",
+          "type": "number"
+        },
+        "engine_ts_ms": {
+          "title": "Engine Ts Ms",
+          "type": "number"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "type": {
+          "const": "pong",
+          "default": "pong",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "client_ts_ms",
+        "engine_ts_ms"
+      ],
+      "title": "PongMessage",
+      "type": "object"
+    },
+    "Rect": {
+      "additionalProperties": false,
+      "properties": {
+        "h": {
+          "title": "H",
+          "type": "number"
+        },
+        "w": {
+          "title": "W",
+          "type": "number"
+        },
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "w",
+        "h"
+      ],
+      "title": "Rect",
+      "type": "object"
+    },
+    "RecurringIssue": {
+      "additionalProperties": false,
+      "properties": {
+        "last_ts_ms": {
+          "title": "Last Ts Ms",
+          "type": "number"
+        },
+        "occurrences": {
+          "title": "Occurrences",
+          "type": "integer"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "sessions": {
+          "title": "Sessions",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "rule_id",
+        "sessions",
+        "occurrences",
+        "last_ts_ms"
+      ],
+      "title": "RecurringIssue",
+      "type": "object"
+    },
+    "SessionEndedMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "summary": {
+          "$ref": "#/$defs/SessionSummary"
+        },
+        "type": {
+          "const": "session_ended",
+          "default": "session_ended",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "session_id",
+        "reason",
+        "summary"
+      ],
+      "title": "SessionEndedMessage",
+      "type": "object"
+    },
+    "SessionStartedMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "persistence": {
+          "enum": [
+            "sqlite",
+            "unavailable"
+          ],
+          "title": "Persistence",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "started_ts_ms": {
+          "title": "Started Ts Ms",
+          "type": "number"
+        },
+        "type": {
+          "const": "session_started",
+          "default": "session_started",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "session_id",
+        "started_ts_ms",
+        "persistence"
+      ],
+      "title": "SessionStartedMessage",
+      "type": "object"
+    },
+    "SessionSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "acquisitions": {
+          "title": "Acquisitions",
+          "type": "integer"
+        },
+        "ended_ts_ms": {
+          "title": "Ended Ts Ms",
+          "type": "number"
+        },
+        "exposures": {
+          "title": "Exposures",
+          "type": "integer"
+        },
+        "frames_dropped": {
+          "title": "Frames Dropped",
+          "type": "integer"
+        },
+        "frames_processed": {
+          "title": "Frames Processed",
+          "type": "integer"
+        },
+        "metrics": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Metrics",
+          "type": "array"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "started_ts_ms": {
+          "title": "Started Ts Ms",
+          "type": "number"
+        }
+      },
+      "required": [
+        "session_id",
+        "started_ts_ms",
+        "ended_ts_ms",
+        "frames_processed",
+        "frames_dropped",
+        "exposures",
+        "acquisitions",
+        "metrics"
+      ],
+      "title": "SessionSummary",
+      "type": "object"
+    },
+    "ShotFiredEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "error_deg": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Point2"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "frame_id": {
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "movement_error": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Movement Error"
+        },
+        "on_head": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "On Head"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "shots": {
+          "title": "Shots",
+          "type": "integer"
+        },
+        "track_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Track Id"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "type": {
+          "const": "shot_fired",
+          "default": "shot_fired",
+          "title": "Type",
+          "type": "string"
+        },
+        "view_speed_dps": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "View Speed Dps"
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "session_id",
+        "frame_id",
+        "ts_ms",
+        "confidence",
+        "type",
+        "shots",
+        "track_id",
+        "error_deg",
+        "on_head",
+        "view_speed_dps",
+        "movement_error"
+      ],
+      "title": "ShotFiredEvent",
+      "type": "object"
+    },
+    "SkillDataPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "samples": {
+          "title": "Samples",
+          "type": "integer"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "session_id",
+        "ts_ms",
+        "value",
+        "samples"
+      ],
+      "title": "SkillDataPoint",
+      "type": "object"
+    },
+    "SkillProgress": {
+      "additionalProperties": false,
+      "properties": {
+        "better": {
+          "enum": [
+            "lower",
+            "higher"
+          ],
+          "title": "Better",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "method": {
+          "title": "Method",
+          "type": "string"
+        },
+        "points": {
+          "items": {
+            "$ref": "#/$defs/SkillDataPoint"
+          },
+          "title": "Points",
+          "type": "array"
+        },
+        "skill": {
+          "title": "Skill",
+          "type": "string"
+        },
+        "trend": {
+          "enum": [
+            "improving",
+            "declining",
+            "stable",
+            "insufficient_data"
+          ],
+          "title": "Trend",
+          "type": "string"
+        },
+        "trend_detail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Trend Detail"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "skill",
+        "label",
+        "unit",
+        "method",
+        "better",
+        "points",
+        "trend",
+        "trend_detail"
+      ],
+      "title": "SkillProgress",
+      "type": "object"
+    },
+    "SourceReconfiguredEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "frame_id": {
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "gap_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gap Ms"
+        },
+        "height": {
+          "title": "Height",
+          "type": "integer"
+        },
+        "reason": {
+          "enum": [
+            "session_start",
+            "resolution_changed",
+            "capture_gap"
+          ],
+          "title": "Reason",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "type": {
+          "const": "source_reconfigured",
+          "default": "source_reconfigured",
+          "title": "Type",
+          "type": "string"
+        },
+        "width": {
+          "title": "Width",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "session_id",
+        "frame_id",
+        "ts_ms",
+        "confidence",
+        "type",
+        "reason",
+        "width",
+        "height",
+        "gap_ms"
+      ],
+      "title": "SourceReconfiguredEvent",
+      "type": "object"
+    },
+    "StartSessionMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "coaching": {
+          "$ref": "#/$defs/CoachingSettings"
+        },
+        "perception": {
+          "$ref": "#/$defs/PerceptionSettings"
+        },
+        "player_id": {
+          "default": "local",
+          "maxLength": 64,
+          "title": "Player Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Session Id"
+        },
+        "source": {
+          "$ref": "#/$defs/ClientSourceInfo"
+        },
+        "type": {
+          "const": "start_session",
+          "default": "start_session",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "session_id",
+        "player_id",
+        "source",
+        "coaching",
+        "perception"
+      ],
+      "title": "StartSessionMessage",
+      "type": "object"
+    },
+    "TargetAcquiredEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "acquisition_ms": {
+          "title": "Acquisition Ms",
+          "type": "number"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "entry_error_deg": {
+          "$ref": "#/$defs/Point2"
+        },
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "frame_id": {
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "resolution_ms": {
+          "description": "Timing uncertainty: interval between analyzed frames",
+          "title": "Resolution Ms",
+          "type": "number"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "track_id": {
+          "title": "Track Id",
+          "type": "integer"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "type": {
+          "const": "target_acquired",
+          "default": "target_acquired",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "session_id",
+        "frame_id",
+        "ts_ms",
+        "confidence",
+        "type",
+        "track_id",
+        "acquisition_ms",
+        "resolution_ms",
+        "entry_error_deg"
+      ],
+      "title": "TargetAcquiredEvent",
+      "type": "object"
+    },
+    "TargetDetection": {
+      "additionalProperties": false,
+      "properties": {
+        "area_px": {
+          "description": "Approximate silhouette area in source px",
+          "title": "Area Px",
+          "type": "integer"
+        },
+        "backend": {
+          "title": "Backend",
+          "type": "string"
+        },
+        "bbox": {
+          "$ref": "#/$defs/Rect"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "crosshair_overlap": {
+          "default": false,
+          "description": "Head partly covered by the crosshair (position less certain)",
+          "title": "Crosshair Overlap",
+          "type": "boolean"
+        },
+        "head": {
+          "$ref": "#/$defs/Point2"
+        },
+        "head_method": {
+          "enum": [
+            "head_profile",
+            "top_ratio",
+            "blob_top",
+            "refined_crop"
+          ],
+          "title": "Head Method",
+          "type": "string"
+        },
+        "head_radius": {
+          "description": "Head radius normalized by source width",
+          "title": "Head Radius",
+          "type": "number"
+        }
+      },
+      "required": [
+        "bbox",
+        "head",
+        "head_radius",
+        "head_method",
+        "confidence",
+        "area_px",
+        "backend",
+        "crosshair_overlap"
+      ],
+      "title": "TargetDetection",
+      "type": "object"
+    },
+    "TargetExposedEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "entry_error_deg": {
+          "$ref": "#/$defs/Point2"
+        },
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "frame_id": {
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "head": {
+          "$ref": "#/$defs/Point2"
+        },
+        "head_radius_deg": {
+          "title": "Head Radius Deg",
+          "type": "number"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "track_id": {
+          "title": "Track Id",
+          "type": "integer"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "type": {
+          "const": "target_exposed",
+          "default": "target_exposed",
+          "title": "Type",
+          "type": "string"
+        },
+        "view_settled": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "View speed below settle threshold at exposure (pre-aim held)",
+          "title": "View Settled"
+        },
+        "view_speed_dps": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "View Speed Dps"
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "session_id",
+        "frame_id",
+        "ts_ms",
+        "confidence",
+        "type",
+        "track_id",
+        "head",
+        "entry_error_deg",
+        "head_radius_deg",
+        "view_speed_dps",
+        "view_settled"
+      ],
+      "title": "TargetExposedEvent",
+      "type": "object"
+    },
+    "TargetLostEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "acquired": {
+          "title": "Acquired",
+          "type": "boolean"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "frame_id": {
+          "title": "Frame Id",
+          "type": "integer"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "track_id": {
+          "title": "Track Id",
+          "type": "integer"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "number"
+        },
+        "type": {
+          "const": "target_lost",
+          "default": "target_lost",
+          "title": "Type",
+          "type": "string"
+        },
+        "visible_ms": {
+          "title": "Visible Ms",
+          "type": "number"
+        }
+      },
+      "required": [
+        "schema_version",
+        "event_id",
+        "session_id",
+        "frame_id",
+        "ts_ms",
+        "confidence",
+        "type",
+        "track_id",
+        "visible_ms",
+        "acquired"
+      ],
+      "title": "TargetLostEvent",
+      "type": "object"
+    },
+    "TelemetryMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "snapshot": {
+          "$ref": "#/$defs/PerformanceSnapshot"
+        },
+        "type": {
+          "const": "telemetry",
+          "default": "telemetry",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "snapshot"
+      ],
+      "title": "TelemetryMessage",
+      "type": "object"
+    },
+    "TextField": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "method": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Method"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why the field is unknown/stale, if it is",
+          "title": "Reason"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "observed",
+            "estimated",
+            "unknown",
+            "stale"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "updated_ts_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated Ts Ms"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        }
+      },
+      "required": [
+        "status",
+        "confidence",
+        "updated_ts_ms",
+        "source",
+        "method",
+        "reason",
+        "value"
+      ],
+      "title": "TextField",
+      "type": "object"
+    },
+    "TextListField": {
+      "additionalProperties": false,
+      "properties": {
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "method": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Method"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why the field is unknown/stale, if it is",
+          "title": "Reason"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "status": {
+          "default": "unknown",
+          "enum": [
+            "observed",
+            "estimated",
+            "unknown",
+            "stale"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "updated_ts_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated Ts Ms"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        }
+      },
+      "required": [
+        "status",
+        "confidence",
+        "updated_ts_ms",
+        "source",
+        "method",
+        "reason",
+        "value"
+      ],
+      "title": "TextListField",
+      "type": "object"
+    },
+    "TrackState": {
+      "additionalProperties": false,
+      "properties": {
+        "acquired": {
+          "default": false,
+          "title": "Acquired",
+          "type": "boolean"
+        },
+        "acquisition_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Acquisition Ms"
+        },
+        "bbox": {
+          "$ref": "#/$defs/Rect"
+        },
+        "confidence": {
+          "title": "Confidence",
+          "type": "number"
+        },
+        "error_deg": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Point2"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Head minus crosshair in degrees: x>0 head right of crosshair, y>0 head above"
+        },
+        "first_seen_ts_ms": {
+          "title": "First Seen Ts Ms",
+          "type": "number"
+        },
+        "head": {
+          "$ref": "#/$defs/Point2"
+        },
+        "head_radius": {
+          "title": "Head Radius",
+          "type": "number"
+        },
+        "head_radius_deg": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Head Radius Deg"
+        },
+        "last_seen_ts_ms": {
+          "title": "Last Seen Ts Ms",
+          "type": "number"
+        },
+        "status": {
+          "enum": [
+            "visible",
+            "coasting"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "track_id": {
+          "title": "Track Id",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "track_id",
+        "status",
+        "head",
+        "head_radius",
+        "bbox",
+        "confidence",
+        "first_seen_ts_ms",
+        "last_seen_ts_ms",
+        "error_deg",
+        "head_radius_deg",
+        "acquired",
+        "acquisition_ms"
+      ],
+      "title": "TrackState",
+      "type": "object"
+    },
+    "UpdateSettingsMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "coaching": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CoachingSettings"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "perception": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PerceptionSettings"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "type": {
+          "const": "update_settings",
+          "default": "update_settings",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "coaching",
+        "perception"
+      ],
+      "title": "UpdateSettingsMessage",
+      "type": "object"
+    },
+    "VoiceInstruction": {
+      "additionalProperties": false,
+      "description": "A request to speak. P0 system/safety, P1 essential training, P2 tactical, P3 general.",
+      "properties": {
+        "created_ts_ms": {
+          "title": "Created Ts Ms",
+          "type": "number"
+        },
+        "dedupe_key": {
+          "title": "Dedupe Key",
+          "type": "string"
+        },
+        "domain": {
+          "enum": [
+            "aim",
+            "utility",
+            "positioning",
+            "tactical",
+            "agent",
+            "team",
+            "communication",
+            "system"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "interrupt": {
+          "default": false,
+          "title": "Interrupt",
+          "type": "boolean"
+        },
+        "language": {
+          "enum": [
+            "en",
+            "ko"
+          ],
+          "title": "Language",
+          "type": "string"
+        },
+        "priority": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "title": "Priority",
+          "type": "string"
+        },
+        "rec_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rec Id"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "session_id": {
+          "title": "Session Id",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 400,
+          "title": "Text",
+          "type": "string"
+        },
+        "ttl_ms": {
+          "description": "Discard if not started within this many ms of creation",
+          "title": "Ttl Ms",
+          "type": "number"
+        },
+        "voice_id": {
+          "title": "Voice Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "voice_id",
+        "session_id",
+        "created_ts_ms",
+        "priority",
+        "domain",
+        "text",
+        "language",
+        "dedupe_key",
+        "interrupt",
+        "ttl_ms",
+        "rec_id"
+      ],
+      "title": "VoiceInstruction",
+      "type": "object"
+    }
+  },
+  "$id": "https://tari.local/schemas/v1/tari.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "TARI event schema 1.0.0. Generated from tari_schema; do not edit.",
+  "properties": {
+    "ClientMetricsMessage": {
+      "$ref": "#/$defs/ClientMetricsMessage"
+    },
+    "CoachingRecommendation": {
+      "$ref": "#/$defs/CoachingRecommendation"
+    },
+    "CoachingSettings": {
+      "$ref": "#/$defs/CoachingSettings"
+    },
+    "EndSessionMessage": {
+      "$ref": "#/$defs/EndSessionMessage"
+    },
+    "EnvironmentChangedEvent": {
+      "$ref": "#/$defs/EnvironmentChangedEvent"
+    },
+    "FlickAnalyzedEvent": {
+      "$ref": "#/$defs/FlickAnalyzedEvent"
+    },
+    "FrameDroppedMessage": {
+      "$ref": "#/$defs/FrameDroppedMessage"
+    },
+    "FramePacketHeader": {
+      "$ref": "#/$defs/FramePacketHeader"
+    },
+    "FrameRegion": {
+      "$ref": "#/$defs/FrameRegion"
+    },
+    "FrameResultMessage": {
+      "$ref": "#/$defs/FrameResultMessage"
+    },
+    "GameState": {
+      "$ref": "#/$defs/GameState"
+    },
+    "HelloMessage": {
+      "$ref": "#/$defs/HelloMessage"
+    },
+    "NoticeMessage": {
+      "$ref": "#/$defs/NoticeMessage"
+    },
+    "OverlayInstruction": {
+      "$ref": "#/$defs/OverlayInstruction"
+    },
+    "PerceptionNoticeEvent": {
+      "$ref": "#/$defs/PerceptionNoticeEvent"
+    },
+    "PerceptionResult": {
+      "$ref": "#/$defs/PerceptionResult"
+    },
+    "PerceptionSettings": {
+      "$ref": "#/$defs/PerceptionSettings"
+    },
+    "PerformanceMetric": {
+      "$ref": "#/$defs/PerformanceMetric"
+    },
+    "PerformanceSnapshot": {
+      "$ref": "#/$defs/PerformanceSnapshot"
+    },
+    "PingMessage": {
+      "$ref": "#/$defs/PingMessage"
+    },
+    "PlayerProfile": {
+      "$ref": "#/$defs/PlayerProfile"
+    },
+    "PongMessage": {
+      "$ref": "#/$defs/PongMessage"
+    },
+    "SessionEndedMessage": {
+      "$ref": "#/$defs/SessionEndedMessage"
+    },
+    "SessionStartedMessage": {
+      "$ref": "#/$defs/SessionStartedMessage"
+    },
+    "ShotFiredEvent": {
+      "$ref": "#/$defs/ShotFiredEvent"
+    },
+    "SourceReconfiguredEvent": {
+      "$ref": "#/$defs/SourceReconfiguredEvent"
+    },
+    "StartSessionMessage": {
+      "$ref": "#/$defs/StartSessionMessage"
+    },
+    "TargetAcquiredEvent": {
+      "$ref": "#/$defs/TargetAcquiredEvent"
+    },
+    "TargetExposedEvent": {
+      "$ref": "#/$defs/TargetExposedEvent"
+    },
+    "TargetLostEvent": {
+      "$ref": "#/$defs/TargetLostEvent"
+    },
+    "TelemetryMessage": {
+      "$ref": "#/$defs/TelemetryMessage"
+    },
+    "UpdateSettingsMessage": {
+      "$ref": "#/$defs/UpdateSettingsMessage"
+    },
+    "VoiceInstruction": {
+      "$ref": "#/$defs/VoiceInstruction"
+    }
+  },
+  "title": "TariSchemaV1",
+  "type": "object"
+}
